@@ -172,7 +172,7 @@ const Hero = () => {
       {/* Full-bleed Background Image (Student Photo) */}
       <div className="absolute inset-0 z-0">
         <img 
-          src={banner1}
+          src={banner5}
           alt="Students" 
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
