@@ -166,13 +166,13 @@ const Navbar = () => {
   );
 };
 
-const Hero = () => {
+const Hero = () => { 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Full-bleed Background Image (Student Photo) */}
       <div className="absolute inset-0 z-0">
         <img 
-          src={banner3}
+          src={banner1}
           alt="Students" 
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
@@ -294,9 +294,9 @@ const About = () => {
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
                 <h4 className="text-white text-xl font-bold mb-2">{item.title}</h4>
-                <p className="text-white/80 text-sm">{item.desc}</p>
+                <p className="text-white/90 text-sm">{item.desc}</p>
               </div>
             </motion.div>
           ))}
@@ -314,7 +314,7 @@ const Programs = () => {
       desc: "Un éveil ludique et bienveillant pour poser les bases de la socialisation et de l'apprentissage.",
       icon: <Star className="w-8 h-8" />,
       color: "bg-blue-50 text-blue-600",
-      image: banner9
+      image: banner1
     },
     {
       title: "Primaire",
@@ -322,7 +322,7 @@ const Programs = () => {
       desc: "Un socle de connaissances solide axé sur la maîtrise des fondamentaux et l'ouverture au monde.",
       icon: <BookOpen className="w-8 h-8" />,
       color: "bg-orange-50 text-orange-600",
-      image: banner10
+      image: banner2
     },
     {
       title: "Secondaire",
@@ -745,6 +745,28 @@ const HomePage = () => {
   );
 };
 
+const BackToTop = () => {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 300);
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      aria-label="Remonter en haut"
+      className="fixed right-6 bottom-6 z-50 bg-brand-primary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform"
+    >
+      <ChevronRight className="w-5 h-5 rotate-90" />
+    </button>
+  );
+};
+
 // --- Main App ---
 
 export default function App() {
@@ -760,6 +782,7 @@ export default function App() {
           </Routes>
         </main>
         <Footer />
+        <BackToTop />
       </div>
     </Router>
   );
