@@ -498,7 +498,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-3xl p-10 text-slate-900 shadow-2xl">
+          <div id="contact-form" className="bg-white rounded-3xl p-10 text-slate-900 shadow-2xl">
             <h4 className="text-2xl font-bold mb-8">Envoyez-nous un message via WhatsApp</h4>
             <form className="space-y-6" onSubmit={handleWhatsAppSubmit}>
               <div className="grid grid-cols-2 gap-4">
@@ -794,9 +794,18 @@ const ScrollHandler = () => {
     setTimeout(() => {
       if (hash) {
         const id = hash.replace('#', '');
+        // On small screens, if navigating to #contact, scroll directly to the form
+        if (id === 'contact' && typeof window !== 'undefined' && window.innerWidth < 768) {
+          const formEl = document.getElementById('contact-form');
+          if (formEl) {
+            formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            return;
+          }
+        }
+
         const el = document.getElementById(id);
         if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
