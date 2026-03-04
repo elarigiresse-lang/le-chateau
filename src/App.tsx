@@ -63,6 +63,13 @@ const Navbar = () => {
 
   const isHomePage = location.pathname === '/';
 
+  const handleNavClick = (href: string) => {
+    if (href === '/' && location.pathname === '/') {
+      // already on home page: force scroll to top (hero banner)
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav className={cn(
       "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
@@ -88,6 +95,7 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
+                onClick={() => handleNavClick(link.href)}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-brand-secondary",
                   isScrolled || !isHomePage ? "text-slate-700" : "text-white/90"
@@ -99,6 +107,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.href}
+                onClick={() => handleNavClick(link.href)}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-brand-secondary",
                   isScrolled || !isHomePage ? "text-slate-700" : "text-white/90"
@@ -108,9 +117,9 @@ const Navbar = () => {
               </Link>
             )
           ))}
-          <Link to="/info" className="bg-brand-secondary text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-opacity-90 transition-all">
+          <a href="/#contact" className="bg-brand-secondary text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-opacity-90 transition-all">
             S'inscrire
-          </Link>
+          </a>
         </div>
 
         {/* Mobile Toggle */}
@@ -136,7 +145,10 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    handleNavClick(link.href);
+                  }}
                   className="text-slate-800 text-lg font-medium border-b border-slate-100 pb-2"
                 >
                   {link.name}
@@ -145,20 +157,23 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    handleNavClick(link.href);
+                  }}
                   className="text-slate-800 text-lg font-medium border-b border-slate-100 pb-2"
                 >
                   {link.name}
                 </Link>
               )
             ))}
-            <Link 
-              to="/info"
+            <a
+              href="/#contact"
               onClick={() => setIsMobileMenuOpen(false)}
               className="bg-brand-primary text-white py-3 rounded-xl font-bold mt-2 text-center"
             >
               S'inscrire
-            </Link>
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
@@ -202,9 +217,9 @@ const Hero = () => {
             <a href="#programs" className="bg-brand-secondary text-white px-8 py-4 rounded-full text-lg font-bold hover:scale-105 transition-transform shadow-lg text-center">
               Découvrir nos programmes
             </a>
-            <Link to="/info" className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition-all text-center">
+            <a href="/#about" className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition-all text-center">
               Visite virtuelle
-            </Link>
+            </a>
           </div>
         </motion.div>
       </div>
@@ -473,7 +488,7 @@ const Contact = () => {
               </div>
               <div className="flex items-start gap-6">
                 <div className="p-4 bg-white/10 rounded-2xl">
-                  <Facebook className="w-6 h-6 text-brand-secondary" />
+                  <a href="https://www.facebook.com/pages/Complexe%20scolaire%20Le%20Ch%C3%A2teau/533824930884247/#"><Facebook className="w-6 h-6 text-brand-secondary" /> </a>
                 </div>
                 <div>
                   <p className="font-bold text-xl mb-1">Facebook</p>
@@ -551,7 +566,7 @@ const Footer = () => {
               Une institution dédiée à l'excellence éducative et au développement personnel de chaque enfant depuis 2004.
             </p>
             <div className="flex gap-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-lg hover:bg-brand-secondary transition-colors">
+              <a href="https://www.facebook.com/search/top?q=complexe%20scolaire%20le%20chateau" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-lg hover:bg-brand-secondary transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
             </div>
@@ -560,20 +575,20 @@ const Footer = () => {
           <div>
             <h5 className="font-bold text-lg mb-6">Liens Rapides</h5>
             <ul className="space-y-4 text-slate-400">
-              <li><a href="#" className="hover:text-brand-secondary transition-colors">Accueil</a></li>
-              <li><a href="#about" className="hover:text-brand-secondary transition-colors">Galerie</a></li>
-              <li><a href="#programs" className="hover:text-brand-secondary transition-colors">Programmes</a></li>
-              <li><a href="#facilities" className="hover:text-brand-secondary transition-colors">Infrastructures</a></li>
+              <li><a href="/" className="hover:text-brand-secondary transition-colors">Accueil</a></li>
+              <li><a href="/#about" className="hover:text-brand-secondary transition-colors">Galerie</a></li>
+              <li><a href="/#programs" className="hover:text-brand-secondary transition-colors">Programmes</a></li>
+              <li><a href="/#facilities" className="hover:text-brand-secondary transition-colors">Infrastructures</a></li>
             </ul>
           </div>
 
           <div>
             <h5 className="font-bold text-lg mb-6">Informations</h5>
             <ul className="space-y-4 text-slate-400">
-              <li><a href="#contact" className="hover:text-brand-secondary transition-colors">Inscriptions</a></li>
-              <li><a href="#programs" className="hover:text-brand-secondary transition-colors">Calendrier Scolaire</a></li>
-              <li><a href="#about" className="hover:text-brand-secondary transition-colors">Galerie</a></li>
-              <li><a href="#contact" className="hover:text-brand-secondary transition-colors">FAQ</a></li>
+              <li><a href="/#contact" className="hover:text-brand-secondary transition-colors">Inscriptions</a></li>
+              <li><a href="/#programs" className="hover:text-brand-secondary transition-colors">Calendrier Scolaire</a></li>
+              <li><a href="/#about" className="hover:text-brand-secondary transition-colors">Galerie</a></li>
+              <li><a href="/#contact" className="hover:text-brand-secondary transition-colors">FAQ</a></li>
             </ul>
           </div>
 
@@ -588,7 +603,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-sm">
-          <p>© 2024 Complexe Scolaire Le Château. Tous droits réservés.</p>
+          <p>© 2026 Complexe Scolaire Le Château. Tous droits réservés.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white transition-colors">Mentions Légales</a>
             <a href="#" className="hover:text-white transition-colors">Confidentialité</a>
@@ -769,11 +784,37 @@ const BackToTop = () => {
 
 // --- Main App ---
 
+
+// scroll helper that watches the location and jumps to the proper element
+const ScrollHandler = () => {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    // small delay to let the new page render
+    setTimeout(() => {
+      if (hash) {
+        const id = hash.replace('#', '');
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 50);
+  }, [pathname, hash]);
+
+  return null;
+};
+
 export default function App() {
   return (
     <Router>
       <div className="min-h-screen selection:bg-brand-secondary selection:text-white">
         <Navbar />
+        <ScrollHandler />
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
