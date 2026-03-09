@@ -903,91 +903,72 @@ const InformationPage = () => {
   return (
     <div className="pt-32 pb-24 bg-white min-h-screen">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <div>
-            <h1 className="text-5xl font-bold text-brand-primary mb-6">Informations & Inscriptions</h1>
-            <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-              Vous souhaitez inscrire votre enfant au Complexe Scolaire Le Château ? Retrouvez ici toutes les informations pratiques, les tarifs et les modalités d'inscription.
-            </p>
-            
-            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 mb-8">
-              <h3 className="text-2xl font-bold text-brand-primary mb-6 flex items-center gap-3">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl font-bold text-brand-primary mb-4">Informations & Inscriptions</h1>
+          <p className="text-slate-600 text-lg max-w-3xl mx-auto">
+            Retrouvez ici toutes les démarches, documents et infos pratiques pour inscrire votre enfant et bien préparer sa rentrée.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
+          <div className="lg:col-span-7 space-y-10">
+            <section className="bg-slate-50 p-8 rounded-3xl border border-slate-100 shadow-sm">
+              <h2 className="text-2xl font-bold text-brand-primary mb-4 flex items-center gap-3">
                 <FileText className="text-brand-secondary" /> Dossier d'inscription
-              </h3>
-              <ul className="space-y-4 text-slate-700">
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-brand-primary/10 rounded-full flex items-center justify-center text-brand-primary shrink-0 mt-1">1</div>
-                  <span>Extrait d'acte de naissance original</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-brand-primary/10 rounded-full flex items-center justify-center text-brand-primary shrink-0 mt-1">2</div>
-                  <span>4 photos d'identité récentes du même tirage</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-brand-primary/10 rounded-full flex items-center justify-center text-brand-primary shrink-0 mt-1">3</div>
-                  <span>Bulletins de notes de l'année précédente</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-brand-primary/10 rounded-full flex items-center justify-center text-brand-primary shrink-0 mt-1">4</div>
-                  <span>Certificat de scolarité</span>
-                </li>
+              </h2>
+              <p className="text-slate-600 mb-6">
+                Préparez votre dossier avant de venir au secrétariat : voici la liste des pièces à fournir.
+              </p>
+              <ul className="grid gap-4 md:grid-cols-2 text-slate-700">
+                {[
+                  "Extrait d'acte de naissance original",
+                  "4 photos d'identité récentes",
+                  "Bulletin de notes de l'année précédente",
+                  "Certificat de scolarité (le cas échéant)",
+                  "Numéro Éduc-Master de l'ancienne école",
+                  "Paiement des frais d'inscription (5 000 FCFA)"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="mt-1 h-6 w-6 rounded-full bg-brand-secondary/10 text-brand-secondary flex items-center justify-center font-bold">
+                      {i + 1}
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
-            </div>
+            </section>
 
-            <button className="w-full bg-brand-secondary text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-opacity-90 transition-all shadow-lg">
-              <Download className="w-6 h-6" /> Télécharger la fiche de renseignements
-            </button>
-
-            <div className="grid gap-8 md:grid-cols-2 mt-12">
-              <div className="bg-slate-50 p-8 rounded-3xl shadow-sm border border-slate-100">
-                <h3 className="text-2xl font-bold text-brand-primary mb-4">Conditions d'inscription</h3>
-                <ul className="space-y-3 text-slate-700">
-                  <li>Âge requis correspondant au cycle choisi</li>
-                  <li>Dossier complet déposé avant la date limite</li>
-                  <li>Entretien avec la direction ou le coordinateur pédagogique</li>
-                  <li>Respect du règlement intérieur de l'établissement</li>
-                </ul>
-              </div>
-              <div className="bg-slate-50 p-8 rounded-3xl shadow-sm border border-slate-100">
-                <h3 className="text-2xl font-bold text-brand-primary mb-4">Frais d'inscription</h3>
-                <ul className="space-y-3 text-slate-700">
-                  <li>Frais de dossier : 20 000 FCFA</li>
-                  <li>Droit d'inscription annuel : 150 000 FCFA</li>
-                  <li>Frais de scolarité mensuels : à partir de 70 000 FCFA</li>
-                  <li>Tarifs dégressifs pour fratrie et bourses d'études possibles</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-slate-50 p-8 rounded-3xl shadow-sm border border-slate-100 mt-12">
-              <h3 className="text-2xl font-bold text-brand-primary mb-4">Renseignements pratiques</h3>
+            <section className="bg-slate-50 p-8 rounded-3xl border border-slate-100 shadow-sm">
+              <h2 className="text-2xl font-bold text-brand-primary mb-4 flex items-center gap-3">
+                <Clock className="text-brand-secondary" /> Renseignements pratiques
+              </h2>
               <div className="grid gap-6 md:grid-cols-2">
-                <div>
-                  <p className="font-bold text-slate-800">Horaires des cours</p>
-                  <p className="text-slate-700">Lundi - Vendredi : 8h00 - 16h00</p>
-                  <p className="text-slate-700">Samedi : 8h00 - 12h00 (activités scolaires et ateliers)</p>
+                <div className="rounded-2xl bg-white p-6 border border-slate-100">
+                  <h3 className="font-bold text-slate-800 mb-2">Horaires des cours</h3>
+                  <p className="text-slate-700">Lundi - Vendredi : <strong>8h00 - 16h00</strong></p>
+                  <p className="text-slate-700">Samedi : <strong>8h00 - 12h00</strong> (activités et ateliers)</p>
                 </div>
-                <div>
-                  <p className="font-bold text-slate-800">Règlement intérieur</p>
-                  <p className="text-slate-700">Respect, ponctualité et tenue correcte sont attendus. Le règlement est consultable au secrétariat.</p>
+                <div className="rounded-2xl bg-white p-6 border border-slate-100">
+                  <h3 className="font-bold text-slate-800 mb-2">Règlement intérieur</h3>
+                  <p className="text-slate-700">Ponctualité, respect et tenue correcte sont exigés. Le règlement complet est disponible au secrétariat.</p>
                 </div>
-                <div>
-                  <p className="font-bold text-slate-800">Uniforme scolaire</p>
-                  <p className="text-slate-700">La tenue officielle est exigée à partir du CP (polo + pantalon/jupe, chaussures fermées).</p>
+                <div className="rounded-2xl bg-white p-6 border border-slate-100">
+                  <h3 className="font-bold text-slate-800 mb-2">Uniforme scolaire</h3>
+                  <p className="text-slate-700">Port obligatoire à partir du CP : polo + pantalon/jupe + chaussures fermées.</p>
                 </div>
-                <div>
-                  <p className="font-bold text-slate-800">Calendrier scolaire</p>
+                <div className="rounded-2xl bg-white p-6 border border-slate-100">
+                  <h3 className="font-bold text-slate-800 mb-2">Calendrier scolaire</h3>
                   <p className="text-slate-700">Rentrée : début septembre • Vacances : Noël, Pâques, été • Journées pédagogiques : 2 par trimestre.</p>
                 </div>
               </div>
-            </div>
+            </section>
           </div>
 
-          <div className="sticky top-32">
+          <aside className="lg:col-span-5 sticky top-32 space-y-8">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-slate-100">
-              <img 
-                src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=2070&auto=format&fit=crop" 
-                alt="Prospectus de l'école" 
+              <img
+                src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=2070&auto=format&fit=crop"
+                alt="Prospectus de l'école"
                 className="w-full h-auto"
                 referrerPolicy="no-referrer"
               />
@@ -995,10 +976,10 @@ const InformationPage = () => {
                 <p className="text-white font-bold text-xl italic">Prospectus Officiel 2024-2025</p>
               </div>
             </div>
-            <p className="text-slate-400 text-sm mt-4 text-center italic">
+            <p className="text-slate-400 text-sm text-center italic">
               * Ce prospectus contient le détail des tarifs et du règlement intérieur.
             </p>
-          </div>
+          </aside>
         </div>
       </div>
     </div>
