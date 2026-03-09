@@ -54,8 +54,10 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Accueil', href: '/' },
-    { name: 'Galerie', href: '/#about' },
+    { name: 'À propos', href: '/#about' },
     { name: 'Programmes', href: '/#programs' },
+    { name: 'Actualités', href: '/#news' },
+    { name: 'Témoignages', href: '/#testimonials' },
     { name: 'Résultats', href: '/results' },
     { name: 'Renseignements', href: '/info' },
     { name: 'Contact', href: '/#contact' },
@@ -217,7 +219,10 @@ const Hero = () => {
             <a href="#programs" className="bg-brand-secondary text-white px-8 py-4 rounded-full text-lg font-bold hover:scale-105 transition-transform shadow-lg text-center">
               Découvrir nos programmes
             </a>
-            <a href="/#about" className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition-all text-center">
+            <a href="#contact" className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition-all text-center">
+              Inscription
+            </a>
+            <a href="/#gallery" className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition-all text-center">
               Visite virtuelle
             </a>
           </div>
@@ -283,7 +288,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-white">
+    <section id="gallery" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-sm font-bold text-brand-secondary uppercase tracking-widest mb-4">Galerie Photos</h2>
@@ -301,7 +306,7 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group relative rounded-3xl overflow-hidden shadow-lg aspect-[4/3]"
+              className="group relative rounded-3xl overflow-hidden shadow-lg aspect-4/3"
             >
               <img 
                 src={item.url} 
@@ -309,7 +314,7 @@ const About = () => {
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
                 <h4 className="text-white text-xl font-bold mb-2">{item.title}</h4>
                 <p className="text-white/90 text-sm">{item.desc}</p>
               </div>
@@ -421,11 +426,209 @@ const Facilities = () => {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity" />
               <div className="absolute bottom-6 left-6 right-6">
                 <p className="text-white font-bold text-xl">{f.name}</p>
               </div>
             </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const DirectorMessage = () => (
+  <section id="director" className="py-24 bg-slate-50">
+    <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <h2 className="text-sm font-bold text-brand-secondary uppercase tracking-widest mb-4">Message du Directeur</h2>
+        <h3 className="text-4xl md:text-5xl font-bold text-brand-primary mb-6">Bienvenue au Complexe Scolaire Le Château</h3>
+        <p className="text-slate-600 leading-relaxed mb-6">
+          Notre priorité est de cultiver des esprits curieux, responsables et bienveillants. Chaque jour, nous accompagnons les élèves dans la réussite scolaire et l'épanouissement personnel.
+        </p>
+        <div className="flex items-center gap-4">
+          <img src={banner9} alt="Directeur" className="w-20 h-20 rounded-full object-cover border-4 border-brand-secondary" referrerPolicy="no-referrer" />
+          <div>
+            <p className="font-bold text-lg text-brand-primary">Pr. Jean Dupont</p>
+            <p className="text-slate-500 text-sm">Directeur Général</p>
+          </div>
+        </div>
+      </div>
+      <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+        <img src={banner10} alt="Établissement" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
+        <div className="absolute bottom-8 left-8 right-8">
+          <p className="text-white text-lg font-bold">Rejoignez une communauté où chaque élève trouve sa place.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const AboutDetails = () => (
+  <section id="about" className="py-24 bg-white">
+    <div className="max-w-7xl mx-auto px-6">
+      <div className="text-center mb-16">
+        <h2 className="text-sm font-bold text-brand-secondary uppercase tracking-widest mb-4">À propos de l'école</h2>
+        <h3 className="text-4xl md:text-5xl font-bold text-brand-primary">Notre histoire & nos engagements</h3>
+        <p className="text-slate-600 mt-4 max-w-2xl mx-auto">
+          Depuis sa création, Le Château se consacre à offrir un enseignement exigeant dans un cadre bienveillant.
+        </p>
+      </div>
+
+      <div className="grid gap-10 md:grid-cols-3">
+        <div className="bg-slate-50 p-10 rounded-3xl shadow-sm border border-slate-100">
+          <h4 className="text-xl font-bold text-brand-primary mb-4">Histoire de l'école</h4>
+          <p className="text-slate-600 leading-relaxed">
+            Fondé en 2004, notre établissement a grandi avec l'ambition de devenir un lieu d'excellence académique et d'épanouissement personnel. Chaque promotion de diplômés est une fierté renouvelée.
+          </p>
+        </div>
+        <div className="bg-slate-50 p-10 rounded-3xl shadow-sm border border-slate-100">
+          <h4 className="text-xl font-bold text-brand-primary mb-4">Mission & valeurs</h4>
+          <p className="text-slate-600 leading-relaxed">
+            Nous cultivons une culture de la curiosité, du respect et de l'effort. Notre mission est de former des citoyens responsables, autonomes et ouverts sur le monde.
+          </p>
+        </div>
+        <div className="bg-slate-50 p-10 rounded-3xl shadow-sm border border-slate-100">
+          <h4 className="text-xl font-bold text-brand-primary mb-4">Objectifs éducatifs</h4>
+          <p className="text-slate-600 leading-relaxed">
+            Offrir un apprentissage complet, alliant compétences académiques, savoir-être et engagement citoyen, afin que chaque élève atteigne son plein potentiel.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const News = () => {
+  const events = [
+    {
+      title: "Journée culturelle",
+      date: "15 avril 2025",
+      desc: "Ateliers, spectacles et expositions pour découvrir la richesse des cultures de nos élèves.",
+      icon: <Globe className="w-8 h-8" />,
+      image: banner7
+    },
+    {
+      title: "Compétitions sportives",
+      date: "22 mai 2025",
+      desc: "Tournois interclasses, relais et initiations aux sports collectifs.",
+      icon: <Award className="w-8 h-8" />,
+      image: banner6
+    },
+    {
+      title: "Annonces importantes",
+      date: "30 juin 2025",
+      desc: "Publication des résultats et préparation de la rentrée prochaine.",
+      icon: <BarChart3 className="w-8 h-8" />,
+      image: banner8
+    }
+  ];
+
+  return (
+    <section id="news" className="py-24 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-sm font-bold text-brand-secondary uppercase tracking-widest mb-4">Actualités & événements</h2>
+          <h3 className="text-4xl md:text-5xl font-bold text-brand-primary">Ce qui se passe au Château</h3>
+          <p className="text-slate-600 mt-4 max-w-2xl mx-auto">
+            Restez informés des prochains rendez-vous et des moments forts de la vie scolaire.
+          </p>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-3">
+          {events.map((event, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden"
+            >
+              <div className="h-44 overflow-hidden">
+                <img
+                  src={event.image}
+                  alt={event.title}
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="p-10">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="text-brand-primary">
+                    {event.icon}
+                  </div>
+                  <span className="text-sm font-bold text-slate-500 uppercase tracking-widest">{event.date}</span>
+                </div>
+                <h4 className="text-2xl font-bold text-brand-primary mb-3">{event.title}</h4>
+                <p className="text-slate-600 leading-relaxed">{event.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Testimonials = () => {
+  const testimonials = [
+    {
+      name: "Mme Aïcha Koné",
+      role: "Maman d'élève",
+      quote: "Le personnel est à l'écoute, et mon fils a vraiment progressé. L'ambiance familiale est précieuse.",
+      stars: 5
+    },
+    {
+      name: "M. Samuel Traoré",
+      role: "Ancien élève",
+      quote: "Grâce aux enseignants, j'ai décroché mon bac avec mention. Le Château m'a donné confiance.",
+      stars: 5
+    },
+    {
+      name: "Mme Fatoumata Diallo",
+      role: "Parent d'élève",
+      quote: "Le suivi personnalisé et les ateliers extrascolaires sont un vrai plus pour la réussite.",
+      stars: 5
+    }
+  ];
+
+  return (
+    <section id="testimonials" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-sm font-bold text-brand-secondary uppercase tracking-widest mb-4">Témoignages</h2>
+          <h3 className="text-4xl md:text-5xl font-bold text-brand-primary">Ce que disent nos familles</h3>
+          <p className="text-slate-600 mt-4 max-w-2xl mx-auto">
+            Des retours sincères sur l'expérience Le Château, par des parents et anciens élèves.
+          </p>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-3">
+          {testimonials.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-slate-50 p-10 rounded-3xl shadow-lg border border-slate-100"
+            >
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <p className="text-lg font-bold text-brand-primary">{item.name}</p>
+                  <p className="text-slate-500 text-sm">{item.role}</p>
+                </div>
+                <div className="flex gap-1">
+                  {Array.from({ length: item.stars }).map((_, idx) => (
+                    <Star key={idx} className="w-5 h-5 text-amber-400" />
+                  ))}
+                </div>
+              </div>
+              <p className="text-slate-600 leading-relaxed">"{item.quote}"</p>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -494,6 +697,16 @@ const Contact = () => {
                   <p className="font-bold text-xl mb-1">Facebook</p>
                   <p className="text-white/60">Complexe Scolaire Le Château</p>
                 </div>
+              </div>
+
+              <div className="rounded-3xl overflow-hidden border border-white/20 mt-8">
+                <iframe
+                  title="Localisation de l'école"
+                  src="https://www.google.com/maps?q=123+Rue+du+Savoir,+Ville&output=embed"
+                  className="w-full h-72"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                ></iframe>
               </div>
             </div>
           </div>
@@ -576,7 +789,7 @@ const Footer = () => {
             <h5 className="font-bold text-lg mb-6">Liens Rapides</h5>
             <ul className="space-y-4 text-slate-400">
               <li><a href="/" className="hover:text-brand-secondary transition-colors">Accueil</a></li>
-              <li><a href="/#about" className="hover:text-brand-secondary transition-colors">Galerie</a></li>
+              <li><a href="/#gallery" className="hover:text-brand-secondary transition-colors">Galerie</a></li>
               <li><a href="/#programs" className="hover:text-brand-secondary transition-colors">Programmes</a></li>
               <li><a href="/#facilities" className="hover:text-brand-secondary transition-colors">Infrastructures</a></li>
             </ul>
@@ -587,7 +800,7 @@ const Footer = () => {
             <ul className="space-y-4 text-slate-400">
               <li><a href="/#contact" className="hover:text-brand-secondary transition-colors">Inscriptions</a></li>
               <li><a href="/#programs" className="hover:text-brand-secondary transition-colors">Calendrier Scolaire</a></li>
-              <li><a href="/#about" className="hover:text-brand-secondary transition-colors">Galerie</a></li>
+              <li><a href="/#gallery" className="hover:text-brand-secondary transition-colors">Galerie</a></li>
               <li><a href="/#contact" className="hover:text-brand-secondary transition-colors">FAQ</a></li>
             </ul>
           </div>
@@ -616,12 +829,12 @@ const Footer = () => {
 
 const ResultsPage = () => {
   const results = [
-    { exam: "CEP", rate: "100%", year: "2024", color: "bg-blue-500" },
-    { exam: "BEPC", rate: "98.5%", year: "2024", color: "bg-orange-500" },
-    { exam: "BAC A", rate: "97.8%", year: "2024", color: "bg-emerald-500" },
-    { exam: "BAC B", rate: "96.5%", year: "2024", color: "bg-teal-500" },
-    { exam: "BAC C", rate: "95.2%", year: "2024", color: "bg-cyan-500" },
-    { exam: "BAC D", rate: "94.8%", year: "2024", color: "bg-green-600" }
+    { exam: "CEP", rate: "100%", year: "2025", color: "bg-blue-500" },
+    { exam: "BEPC", rate: "98.5%", year: "2025", color: "bg-orange-500" },
+    { exam: "BAC A", rate: "97.8%", year: "2025", color: "bg-emerald-500" },
+    { exam: "BAC B", rate: "96.5%", year: "2025", color: "bg-teal-500" },
+    { exam: "BAC C", rate: "95.2%", year: "2025", color: "bg-cyan-500" },
+    { exam: "BAC D", rate: "94.8%", year: "2025", color: "bg-green-600" }
   ];
 
   return (
@@ -724,6 +937,50 @@ const InformationPage = () => {
             <button className="w-full bg-brand-secondary text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-opacity-90 transition-all shadow-lg">
               <Download className="w-6 h-6" /> Télécharger la fiche de renseignements
             </button>
+
+            <div className="grid gap-8 md:grid-cols-2 mt-12">
+              <div className="bg-slate-50 p-8 rounded-3xl shadow-sm border border-slate-100">
+                <h3 className="text-2xl font-bold text-brand-primary mb-4">Conditions d'inscription</h3>
+                <ul className="space-y-3 text-slate-700">
+                  <li>Âge requis correspondant au cycle choisi</li>
+                  <li>Dossier complet déposé avant la date limite</li>
+                  <li>Entretien avec la direction ou le coordinateur pédagogique</li>
+                  <li>Respect du règlement intérieur de l'établissement</li>
+                </ul>
+              </div>
+              <div className="bg-slate-50 p-8 rounded-3xl shadow-sm border border-slate-100">
+                <h3 className="text-2xl font-bold text-brand-primary mb-4">Frais d'inscription</h3>
+                <ul className="space-y-3 text-slate-700">
+                  <li>Frais de dossier : 20 000 FCFA</li>
+                  <li>Droit d'inscription annuel : 150 000 FCFA</li>
+                  <li>Frais de scolarité mensuels : à partir de 70 000 FCFA</li>
+                  <li>Tarifs dégressifs pour fratrie et bourses d'études possibles</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="bg-slate-50 p-8 rounded-3xl shadow-sm border border-slate-100 mt-12">
+              <h3 className="text-2xl font-bold text-brand-primary mb-4">Renseignements pratiques</h3>
+              <div className="grid gap-6 md:grid-cols-2">
+                <div>
+                  <p className="font-bold text-slate-800">Horaires des cours</p>
+                  <p className="text-slate-700">Lundi - Vendredi : 8h00 - 16h00</p>
+                  <p className="text-slate-700">Samedi : 8h00 - 12h00 (activités scolaires et ateliers)</p>
+                </div>
+                <div>
+                  <p className="font-bold text-slate-800">Règlement intérieur</p>
+                  <p className="text-slate-700">Respect, ponctualité et tenue correcte sont attendus. Le règlement est consultable au secrétariat.</p>
+                </div>
+                <div>
+                  <p className="font-bold text-slate-800">Uniforme scolaire</p>
+                  <p className="text-slate-700">La tenue officielle est exigée à partir du CP (polo + pantalon/jupe, chaussures fermées).</p>
+                </div>
+                <div>
+                  <p className="font-bold text-slate-800">Calendrier scolaire</p>
+                  <p className="text-slate-700">Rentrée : début septembre • Vacances : Noël, Pâques, été • Journées pédagogiques : 2 par trimestre.</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="sticky top-32">
@@ -734,7 +991,7 @@ const InformationPage = () => {
                 className="w-full h-auto"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-8">
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent flex items-end p-8">
                 <p className="text-white font-bold text-xl italic">Prospectus Officiel 2024-2025</p>
               </div>
             </div>
@@ -752,9 +1009,13 @@ const HomePage = () => {
   return (
     <>
       <Hero />
+      <DirectorMessage />
+      <AboutDetails />
       <About />
       <Programs />
       <Facilities />
+      <News />
+      <Testimonials />
       <Contact />
     </>
   );
