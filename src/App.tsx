@@ -677,7 +677,12 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="font-bold text-xl mb-1">Téléphone</p>
-                  <p className="text-white/60">+225 01 23 45 67 89</p>
+                  <a
+                    href="tel:+2250123456789"
+                    className="text-white/60 hover:text-white hover:underline"
+                  >
+                    +225 01 23 45 67 89
+                  </a>
                 </div>
               </div>
               <div className="flex items-start gap-6">
@@ -945,7 +950,7 @@ const InformationPage = () => {
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="rounded-2xl bg-white p-6 border border-slate-100">
                   <h3 className="font-bold text-slate-800 mb-2">Horaires des cours</h3>
-                  <p className="text-slate-700">Lundi - Vendredi : <strong>8h00 - 16h00</strong></p>
+                  <p className="text-slate-700">Lundi - Vendredi : <strong>8h00 - 18h00</strong></p>
                   <p className="text-slate-700">Samedi : <strong>8h00 - 12h00</strong> (activités et ateliers)</p>
                 </div>
                 <div className="rounded-2xl bg-white p-6 border border-slate-100">
@@ -954,7 +959,7 @@ const InformationPage = () => {
                 </div>
                 <div className="rounded-2xl bg-white p-6 border border-slate-100">
                   <h3 className="font-bold text-slate-800 mb-2">Uniforme scolaire</h3>
-                  <p className="text-slate-700">Port obligatoire à partir du CP : polo + pantalon/jupe + chaussures fermées.</p>
+                  <p className="text-slate-700">Tenue réglementaire obligatoire (disponible à l'école)</p>
                 </div>
                 <div className="rounded-2xl bg-white p-6 border border-slate-100">
                   <h3 className="font-bold text-slate-800 mb-2">Calendrier scolaire</h3>
@@ -973,7 +978,7 @@ const InformationPage = () => {
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent flex items-end p-8">
-                <p className="text-white font-bold text-xl italic">Prospectus Officiel 2024-2025</p>
+                <p className="text-white font-bold text-xl italic">Prospectus Officiel 2025-2026</p>
               </div>
             </div>
             <p className="text-slate-400 text-sm text-center italic">
